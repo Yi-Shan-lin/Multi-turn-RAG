@@ -33,7 +33,7 @@ DATASETS = {
         "json_dir": BASE_DIR / "indexes" / "govt-jsonl",
     },
 }
-SPLIT_SOURCE = "dev"
+SPLIT_SOURCE = "train"
 TRAIN_RATIO = 0.8
 TOPK = 10
 GRID_K1 = [0.6, 0.9, 1.2, 1.5]
@@ -55,7 +55,7 @@ def build_contents(d: dict) -> str:
     return merged or title or text
 
 """
-transfer beir corpus to pyserini jsoncollection
+transfer beir_repo corpus to pyserini jsoncollection
 """
 def prepare_jsonl(json_dir:Path, data_dir: Path) -> None:
     json_dir.mkdir(parents=True, exist_ok=True)
