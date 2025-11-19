@@ -5,6 +5,7 @@ import random
 import subprocess
 from pathlib import Path
 
+import pandas as pd
 from beir.datasets.data_loader import GenericDataLoader
 from beir.retrieval.evaluation import EvaluateRetrieval
 from pyserini.search.lucene import LuceneSearcher
@@ -222,6 +223,9 @@ def main():
     recall10_val = [d["Recall@10"] for d in summary]
     recall10_macro = sum(recall10_val) / len(recall10_val)
     print(f"Recall@10 marco: {recall10_macro}")
+    df_results = pd.DataFrame(summary)
+    markdown_table = df_results.to_markdown(index=False)
+    print(markdown_table)
 
 if __name__ == "__main__":
     main()
